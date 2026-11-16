@@ -159,13 +159,15 @@ df_input = pd.DataFrame(
 # MENAMPILKAN INPUT PENGGUNA
 # ==========================================
 
-st.subheader("Parameter Input Pengguna")
+integer_columns = [
+    col for col in kolom_numerik
+    if pd.api.types.is_integer_dtype(X[col].dtype)
+]
 
-st.dataframe(
-    df_input,
-    use_container_width=True
-)
-
+# Memastikan Year ditampilkan sebagai bilangan bulat
+if "Year" in kolom_numerik:
+    if "Year" not in integer_columns:
+        integer_columns.append("Year")
 
 # ==========================================
 # MELAKUKAN PREDIKSI
