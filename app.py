@@ -11,9 +11,7 @@ import joblib
 @st.cache_resource
 def load_model():
 
-    artifact = joblib.load(
-        "Life_Expectancy_Model.pkl"
-    )
+    artifact = joblib.load("Life_Expectancy_Model.pkl")
 
     return artifact
 
